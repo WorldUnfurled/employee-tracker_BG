@@ -13,3 +13,8 @@ const connection = mysql.createConnection({
   password: '@That1Guy7',
   database: 'company_db',
 });
+
+connection.connect((err) => {
+    if (err) throw err;
+    console.log(`Connected with id ~${connection.threadId}~`);
+});
