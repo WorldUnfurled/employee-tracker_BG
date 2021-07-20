@@ -11,5 +11,5 @@ const connection = mysql.createConnection({
 
   // Be sure to update with your own MySQL password!
   password: '@That1Guy7',
-  database: 'playlistDB',
+  database: 'company_db',
 });
