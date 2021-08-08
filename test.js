@@ -8,89 +8,67 @@ const connection = mysql.createConnection({
   database: 'company_db'
 });
 
-// department vars
-let department_id = `707`;
-const department_name = `Merchandising`;
+const conQuery = (query) => {
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+    });
+}
+const conQueryRows = (query, rows) => {
+    connection.query(query, rows, (err, res) => {
+        if (err) throw err;
+    });
+}
 
-// role vars
-const staff_id = 23;
-const staff_title = "Staff Accountant";
-const staff_salary = 43267.34;
-const staff_dept_id = 111;
-
-//employee vars
-const employee_id = 31;
-const employee_first = `Kelly`;
-const employee_last = `Smartt`;
-const employee_salary = 78921.50;
-const employee_dept_id = 113;
+const conQueryWhere = (query, where) => {
+    connection.query(query, where, (err, res) => {
+        if (err) throw err;
+    });
+}
 
 // ADD
 // 1. DEPARTMENT
-const addDepartment = () => {
-    const departmentQuery = `INSERT INTO department(\`id\`, \`name\`) VALUES (${department_id}, ${department_name})`
-    connection.query(departmentQuery, (err, res) => {
-        if (err) throw err;
-    });
+const addDepartment = (id, name) => {
+    let query = "INSERT INTO department(id, name) VALUES (?, ?)"; 
+    let rows = [id, name];
+    conQueryRows(query, rows);
 }
 
-const viewDepartments = () => {
-    connection.query("SELECT * FROM department", (err, res) => {
-        if (err) throw err;
-        console.log(res);
-    });
+const viewAll = (table) => {
+    let query = "SELECT * FROM ?";
+    conQuery(query, table);
 }
 
 // 2. ROLE
-const addRole = () => {
-    const roleQuery = `INSERT INTO role(\`id\`, \`title\`, \`salary\`, \`department_id\`) VALUES (${staff_id}, ${staff_title}, ${staff_salary}, ${staff_dept_id})`
-    connection.query(roleQuery, (err, res) => {
-        if (err) throw err;
-    });
+const addRole = (id, title, salary, dept_id) => { // ADD ROLE
+    let query = "INSERT INTO role(id, title, salary, department_id) VALUES (?, ?, ?, ?)";
+    let rows = [ id, title, salary, dept_id ];
+    conQueryRows(query, rows);
 }
-
-const viewRoles = () => {
-    connection.query("SELECT * FROM role", (err, res) => {
-        if (err) throw err;
-        console.log(res);
-    });
+const viewRolesByDepartment = (dept_id) => { // VIEW ALL ROLES BY DEPARTMENT
+    let query = "SELECT * FROM role WHERE ?";
+    let where = [ { dept_id: 111 } ];
+    conQueryWhere(query, where);
 }
 
 // 3. EMPLOYEE
-const addEmployee = () => {
-    // const roleQuery; 
-    connection.query(`INSERT INTO employee(\`id\`, \`first_name\`, \`last_name\`, \`role_id\`, \`manager_id\`) VALUES (${employee_id}, ${employee_first}, \`${employee_last}\`, ${employee_salary}, ${employee_dept_id})`, (err, res) => {
-        if (err) throw err;
-    });
+const addEmployee = (id, first_name, last_name, role_id, manager_id) => {
+    let query = "INSERT INTO employee (id, first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?, ?)";
+    let rows = [ id, first_name, last_name, role_id, manager_id ];
+    conQueryRows(query, rows);
 }
 
-const viewRoles = () => {
-    connection.query("SELECT * FROM employee", (err, res) => {
-        if (err) throw err;
-        console.log(res);
-    });
-}
-
-const updateEmployee = () => {
-    connection.query('UPDATE department SET ? WHERE ?',
-            [
-              {
-                id: 111
-              },
-              {
-                id: 1
-              },
-            ], (err) => {
-                if (err) throw err;
-              }
-    );
+const updateEmployee = (updateKey, oldValue, updateValue) => {
+    let query = "UPDATE department SET ? WHERE ?";
+    let where = [ { [updateKey]: oldValue }, { [updateKey]: updateValue } ];
+    conQueryWhere(query, where);
 }
 
 connection.connect((err) => {
     if (err) throw err;
     console.log(`Connected with id ~ ${connection.threadId} ~`);
-    addDepartment(); // Works
-    viewDepartment(); // Works
+    addDepartment("14", "Sanitization");
+    // addDepartment(); // Works
+    // viewDepartment(); // Works
     // viewRole();
     // viewEmployee();
     // addRole();
