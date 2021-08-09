@@ -49,6 +49,44 @@ const initPrompt = () => {
     inquirer
     .prompt(actionQuestions)
     .then(data => {
-        console.log(data.actionChoice);
+        switch(data.actionChoice) {
+            case 'View':
+                viewPrompt();
+                break;
+            case 'Add':
+                addPrompt();
+                break;
+            case 'Update':
+                updatePrompt();
+                break;
+            case 'Delete':
+                deletePrompt();
+                break;
+            default:
+                break;
+        };
+    });
+}
+
+const viewPrompt = () => {
+    inquirer
+    .prompt(viewQuestions)
+    .then(data => {
+        switch(data.actionChoice) {
+            case 'All Employees':
+                // 
+                break;
+            case 'Add':
+                // addEmployees
+                break;
+            case 'Update':
+                // Update
+                break;
+            case 'Delete':
+                deletePrompt();
+                break;
+            default:
+                break;
+        };
     });
 }
