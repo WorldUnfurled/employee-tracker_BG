@@ -66,7 +66,9 @@ const actionQuestions = [
 
 inquirer
 .prompt(actionQuestions)
-.then();
+.then(actionChoice => {
+    console.log(actionChoice);
+});
 
 connection.connect((err) => {
     if (err) throw err;
