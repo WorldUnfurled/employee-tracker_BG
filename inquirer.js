@@ -99,6 +99,24 @@ const addPrompt = () => {
     });
 }
 
+const addDepartmentPrompt = () => {
+    inquirer
+    .prompt(addDepartmentQuestions)
+    .then(data => {});
+}
+
+const addRolePrompt = () => {
+    inquirer
+    .prompt(addRoleQuestions)
+    .then(data => {});
+}
+
+const addEmployeePrompt = () => {
+    inquirer
+    .prompt(addEmployeeQuestions)
+    .then(data => {});
+}
+
 const updatePrompt = () => {
     inquirer
     .prompt(updateQuestions)
@@ -112,4 +130,10 @@ const updatePrompt = () => {
                 break;
         };
     });
-} 
+}
+
+const updateEmployeeRolePrompt = () => {
+    inquirer
+    .prompt(updateEmployeeRoleQuestions)
+    .then(data => {})
+}
