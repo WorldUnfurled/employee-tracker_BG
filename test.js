@@ -1,4 +1,3 @@
-const inquirer = require('inquirer');
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
@@ -54,21 +53,6 @@ const updateEmployee = (updateKey, oldValue, updateValue) => {
     let where = [ { [updateKey]: oldValue }, { [updateKey]: updateValue } ];
     conQuery(query, where);
 }
-
-const actionQuestions = [
-    {
-        type: 'list',
-        name: 'actionChoice',
-        message: 'What would you like to do?',
-        choices: ['View', 'Add', 'Update', 'Delete']
-    }
-]
-
-inquirer
-.prompt(actionQuestions)
-.then(actionChoice => {
-    console.log(actionChoice);
-});
 
 connection.connect((err) => {
     if (err) throw err;
