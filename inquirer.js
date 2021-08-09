@@ -21,7 +21,7 @@ const viewQuestions = [
 const addQuestions = [
     {
         type: 'list',
-        name: 'viewChoice',
+        name: 'addChoice',
         message: 'What would you like to add?',
         choices: ['Department', 'Role', 'Employee']
     }
@@ -30,7 +30,7 @@ const addQuestions = [
 const updateQuestions = [
     {
         type: 'list',
-        name: 'viewChoice',
+        name: 'updateChoice',
         message: 'What would you like to update?',
         choices: ['Department', 'Role', 'Employee']
     }
@@ -39,7 +39,7 @@ const updateQuestions = [
 const deleteQuestions = [
     {
         type: 'list',
-        name: 'viewChoice',
+        name: 'deleteChoice',
         message: 'What would you like to delete?',
         choices: ['Department', 'Role', 'Employee']
     }
@@ -72,21 +72,78 @@ const viewPrompt = () => {
     inquirer
     .prompt(viewQuestions)
     .then(data => {
-        switch(data.actionChoice) {
+        switch(data.viewChoice) {
+            case 'All Departments':
+                // viewAll(department)
+                break;
+            case 'All Roles':
+                // viewAll(role)
+                break;
             case 'All Employees':
-                // 
-                break;
-            case 'Add':
-                // addEmployees
-                break;
-            case 'Update':
-                // Update
-                break;
-            case 'Delete':
-                deletePrompt();
+                // viewAll(employee)
                 break;
             default:
                 break;
         };
     });
 }
+
+const addPrompt = () => {
+    inquirer
+    .prompt(addQuestions)
+    .then(data => {
+        switch(data.addChoice) {
+            case 'Department':
+                addDepartmentPrompt();
+                break;
+            case 'Role':
+                addRolePrompt();
+                break;
+            case 'Employee':
+                addEmployeePrompt();
+                break;
+            default:
+                break;
+        };
+    });
+}
+
+const updatePrompt = () => {
+    inquirer
+    .prompt(updateQuestions)
+    .then(data => {
+        switch(data.updateChoice) {
+            case 'Department':
+                updateDepartmentPrompt();
+                break;
+            case 'Role':
+                updateRolePrompt();
+                break;
+            case 'Employee':
+                updateEmployeePrompt();
+                break;
+            default:
+                break;
+        };
+    });
+} 
+
+const deletePrompt = () => {
+    inquirer
+    .prompt(deleteQuestions)
+    .then(data => {
+        switch(data.updateChoice) {
+            case 'Department':
+                deleteDepartmentPrompt();
+                break;
+            case 'Role':
+                deleteRolePrompt();
+                break;
+            case 'Employee':
+                deleteEmployeePrompt();
+                break;
+            default:
+                break;
+        };
+    });
+} 
