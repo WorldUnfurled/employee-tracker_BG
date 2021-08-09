@@ -14,7 +14,7 @@ const viewQuestions = [
         type: 'list',
         name: 'viewChoice',
         message: 'What would you like to view?',
-        choices: ['All Departments', 'All Roles', 'All Employees']
+        choices: ['All Departments', 'All Roles', 'All Employees', 'Quit']
     }
 ]
 
@@ -23,7 +23,7 @@ const addQuestions = [
         type: 'list',
         name: 'addChoice',
         message: 'What would you like to add?',
-        choices: ['Department', 'Role', 'Employee']
+        choices: ['Department', 'Role', 'Employee', 'Quit']
     }
 ]
 
@@ -32,16 +32,7 @@ const updateQuestions = [
         type: 'list',
         name: 'updateChoice',
         message: 'What would you like to update?',
-        choices: ['Department', 'Role', 'Employee']
-    }
-]
-
-const deleteQuestions = [
-    {
-        type: 'list',
-        name: 'deleteChoice',
-        message: 'What would you like to delete?',
-        choices: ['Department', 'Role', 'Employee']
+        choices: ['Employee Role', 'Quit']
     }
 ]
 
@@ -113,36 +104,11 @@ const updatePrompt = () => {
     .prompt(updateQuestions)
     .then(data => {
         switch(data.updateChoice) {
-            case 'Department':
-                updateDepartmentPrompt();
-                break;
-            case 'Role':
-                updateRolePrompt();
-                break;
-            case 'Employee':
-                updateEmployeePrompt();
+            case 'Employee Role':
+                updateEmployeeRolePrompt();
                 break;
             default:
-                break;
-        };
-    });
-} 
-
-const deletePrompt = () => {
-    inquirer
-    .prompt(deleteQuestions)
-    .then(data => {
-        switch(data.updateChoice) {
-            case 'Department':
-                deleteDepartmentPrompt();
-                break;
-            case 'Role':
-                deleteRolePrompt();
-                break;
-            case 'Employee':
-                deleteEmployeePrompt();
-                break;
-            default:
+                // Quit
                 break;
         };
     });
