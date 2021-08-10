@@ -27,6 +27,55 @@ const addQuestions = [
     }
 ]
 
+const addDepartmentQuestions = [
+    {
+        type: 'input',
+        name: 'addDepartmentName',
+        message: 'What is the department\'s name?'
+    }
+]
+
+const addRoleQuestions = [
+    {
+        type: 'input',
+        name: 'addRoleTitle',
+        message: 'What is the role\'s title?'
+    },
+    {
+        type: 'input',
+        name: 'addRoleTitle',
+        message: 'What is the salary for this role?'
+    },
+    {
+        type: 'list',
+        name: 'addRoleDeptId',
+        message: 'What is the id of the department this role is under?'
+    }
+]
+
+const addEmployeeQuestions = [
+    {
+        type: 'input',
+        name: 'addEmployeeFirst',
+        message: 'What is the employee\'s first name?'
+    },
+    {
+        type: 'input',
+        name: 'addEmployeeLast',
+        message: 'What is the employee\'s last name?'
+    },
+    {
+        type: 'list',
+        name: 'addEmployeeRoleId',
+        message: 'What is the ID of the role the employee operates under?'
+    },
+    {
+        type: 'list',
+        name: 'addEmployeeManagerId',
+        message: 'What is the ID of the manager the employee operates under?'
+    }
+]
+
 const updateQuestions = [
     {
         type: 'list',
