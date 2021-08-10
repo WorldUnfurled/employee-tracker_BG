@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+import { initPrompt } from './lib/js/index'
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -11,4 +12,5 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
     if (err) throw err;
     console.log(`Connected with id ~ ${connection.threadId} ~`);
+    initPrompt();
 });
