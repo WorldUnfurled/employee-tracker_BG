@@ -1,93 +1,9 @@
 const inquirer = require('inquirer');
-
-const actionQuestions = [
-    {
-        type: 'list',
-        name: 'actionChoice',
-        message: 'What would you like to do?',
-        choices: ['View', 'Add', 'Update', 'Delete']
-    }
-]
-
-const viewQuestions = [
-    {
-        type: 'list',
-        name: 'viewChoice',
-        message: 'What would you like to view?',
-        choices: ['All Departments', 'All Roles', 'All Employees', 'Quit']
-    }
-]
-
-const addQuestions = [
-    {
-        type: 'list',
-        name: 'addChoice',
-        message: 'What would you like to add?',
-        choices: ['Department', 'Role', 'Employee', 'Quit']
-    }
-]
-
-const addDepartmentQuestions = [
-    {
-        type: 'input',
-        name: 'name',
-        message: 'What is the department\'s name?'
-    }
-]
-
-const addRoleQuestions = [
-    {
-        type: 'input',
-        name: 'title',
-        message: 'What is the role\'s title?'
-    },
-    {
-        type: 'input',
-        name: 'salary',
-        message: 'What is the salary for this role?'
-    },
-    {
-        type: 'list',
-        name: 'dept_id',
-        message: 'What is the id of the department this role is under?'
-    }
-]
-
-const addEmployeeQuestions = [
-    {
-        type: 'input',
-        name: 'first_name',
-        message: 'What is the employee\'s first name?'
-    },
-    {
-        type: 'input',
-        name: 'last_name',
-        message: 'What is the employee\'s last name?'
-    },
-    {
-        type: 'list',
-        name: 'role_id',
-        message: 'What is the ID of the role the employee operates under?'
-    },
-    {
-        type: 'list',
-        name: 'manager_id',
-        message: 'What is the ID of the manager the employee operates under?'
-    }
-]
-
-const updateQuestions = [
-    {
-        type: 'list',
-        name: 'updateChoice',
-        message: 'What would you like to update?',
-        choices: ['Employee Role', 'Quit']
-    }
-]
+import * as q from './questions';
 
 const initPrompt = () => {
     inquirer
-    .prompt(actionQuestions)
+    .prompt(q.actionQuestions)
     .then(data => {
         switch(data.actionChoice) {
             case 'View':
@@ -110,7 +26,7 @@ const initPrompt = () => {
 
 const viewPrompt = () => {
     inquirer
-    .prompt(viewQuestions)
+    .prompt(q.viewQuestions)
     .then(data => {
         switch(data.viewChoice) {
             case 'All Departments':
@@ -130,7 +46,7 @@ const viewPrompt = () => {
 
 const addPrompt = () => {
     inquirer
-    .prompt(addQuestions)
+    .prompt(q.addQuestions)
     .then(data => {
         switch(data.addChoice) {
             case 'Department':
@@ -150,7 +66,7 @@ const addPrompt = () => {
 
 const addDepartmentPrompt = () => {
     inquirer
-    .prompt(addDepartmentQuestions)
+    .prompt(q.addDepartmentQuestions)
     .then(data => {
         // addDepartment(data.name);
     });
@@ -158,7 +74,7 @@ const addDepartmentPrompt = () => {
 
 const addRolePrompt = () => {
     inquirer
-    .prompt(addRoleQuestions)
+    .prompt(q.addRoleQuestions)
     .then(data => {
         // addRole(data.title, data.salary, data.dept_id);
     });
@@ -166,7 +82,7 @@ const addRolePrompt = () => {
 
 const addEmployeePrompt = () => {
     inquirer
-    .prompt(addEmployeeQuestions)
+    .prompt(q.addEmployeeQuestions)
     .then(data => {
         // addEmployee(data.first_name, data.last_name, data.role_id, data.manager_id);
     });
@@ -174,7 +90,7 @@ const addEmployeePrompt = () => {
 
 const updatePrompt = () => {
     inquirer
-    .prompt(updateQuestions)
+    .prompt(q.updateQuestions)
     .then(data => {
         switch(data.updateChoice) {
             case 'Employee Role':
@@ -185,10 +101,4 @@ const updatePrompt = () => {
                 break;
         };
     });
-}
-
-const updateEmployeeRolePrompt = () => {
-    inquirer
-    .prompt(updateEmployeeRoleQuestions)
-    .then(data => {})
 }
