@@ -1,15 +1,11 @@
 const mysql = require('mysql');
-const prompt = require('./lib/js/index');
+require('dotenv').config('./env');
 
-const connection = mysql.createConnection({
+// Create connection
+module.exports = mysql.createConnection({
   host: 'localhost',
   port: 3306,
-  user: 'root',
-  password: '@That1Guy7',
-  database: 'company_db'
-});
-
-connection.connect((err) => {
-    if (err) throw err;
-    prompt.initPrompt();
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_DATABASE
 });

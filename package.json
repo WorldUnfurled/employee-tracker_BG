@@ -4,7 +4,8 @@
   "description": "Content management system for non-developers in a company to work with its database.",
   "main": "company_dbConnection.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./lib/js/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/WorldUnfurled/employee-tracker_BG#readme",
   "dependencies": {
     "console.table": "^0.10.0",
+    "dotenv": "^10.0.0",
     "inquirer": "^8.1.2",
     "mysql": "^2.18.1"
   }
