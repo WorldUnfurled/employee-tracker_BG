@@ -1,4 +1,4 @@
-DROP company_db IF EXISTS;
+DROP DATABASE IF EXISTS company_db;
 CREATE DATABASE company_db;
 
 USE company_db;
@@ -9,7 +9,7 @@ CREATE TABLE `department` (
 );
 
 CREATE TABLE `role` (
-	`id` INT NOT NULLPRIMARY KEY AUTO_INCREMENT,
+	`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `title` VARCHAR(30),
     `salary` DECIMAL,
     `department_id` INT
